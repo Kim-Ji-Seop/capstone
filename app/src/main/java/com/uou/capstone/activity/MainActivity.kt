@@ -17,10 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initBottomNavigation()
+        initBottomNavigation() // 바텀 네비
 
     }
 
+    // 바텀 네비게이션 뷰 초기화
     private fun initBottomNavigation(){
 
         supportFragmentManager.beginTransaction()

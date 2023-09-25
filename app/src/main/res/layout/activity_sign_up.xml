@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SignUpActivity">
+    tools:context=".activity.Sign_UpActivity">
     <TextView
-        android:id="@+id/signup_tv"
+        android:id="@+id/sign_up_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/signup_outer_container"
+        android:id="@+id/sign_up_outer_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
@@ -28,15 +28,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_tv">
+        app:layout_constraintTop_toBottomOf="@id/sign_up_tv">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/signup_container"
+            android:id="@+id/sign_up_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/signup_email_tv"
+                android:id="@+id/sign_up_email_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/text_font_bold"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/signup_email_et"
+                android:id="@+id/sign_up_email_et"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -57,32 +57,32 @@
                 android:hint="예) example@naver.com"
                 android:padding="5dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/signup_email_validation_btn"
+                app:layout_constraintEnd_toStartOf="@+id/sign_up_email_validation_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_email_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_email_tv" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signup_email_validation_btn"
+                android:id="@+id/sign_up_email_validation_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/solid_button"
                 android:fontFamily="@font/text_font"
                 android:text="인증코드전송"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/signup_email_et"
+                app:layout_constraintBottom_toBottomOf="@+id/sign_up_email_et"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/signup_email_et" />
+                app:layout_constraintTop_toTopOf="@+id/sign_up_email_et" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/signup_hidden_email_validation_cl"
+                android:id="@+id/sign_up_hidden_email_validation_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/signup_email_validation_btn"
-                app:layout_constraintTop_toBottomOf="@+id/signup_email_validation_btn">
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_email_validation_btn"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_email_validation_btn">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/signup_email_validation_number_et"
+                    android:id="@+id/sign_up_email_validation_number_et"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="2dp"
@@ -91,12 +91,12 @@
                     android:hint="인증번호를 입력해주세요"
                     android:padding="5dp"
                     android:textSize="13sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/signup_email_validation_number_btn"
-                    app:layout_constraintEnd_toStartOf="@+id/signup_email_validation_number_btn"
-                    app:layout_constraintTop_toTopOf="@+id/signup_email_validation_number_btn" />
+                    app:layout_constraintBottom_toBottomOf="@+id/sign_up_email_validation_number_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/sign_up_email_validation_number_btn"
+                    app:layout_constraintTop_toTopOf="@+id/sign_up_email_validation_number_btn" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/signup_email_validation_number_btn"
+                    android:id="@+id/sign_up_email_validation_number_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="4dp"
@@ -109,7 +109,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/signup_password_tv"
+                android:id="@+id/sign_up_password_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -117,11 +117,11 @@
                 android:text="비밀번호"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/signup_email_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_hidden_email_validation_cl" />
+                app:layout_constraintStart_toStartOf="@+id/sign_up_email_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_hidden_email_validation_cl" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/signup_password_et"
+                android:id="@+id/sign_up_password_et"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -131,12 +131,12 @@
                 android:inputType="textPassword"
                 android:padding="5dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_email_validation_btn"
-                app:layout_constraintStart_toStartOf="@+id/signup_email_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_password_tv" />
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_email_validation_btn"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_email_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_password_tv" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/signup_password_validation_et"
+                android:id="@+id/sign_up_password_validation_et"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -146,12 +146,12 @@
                 android:inputType="textPassword"
                 android:padding="5dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_password_et"
-                app:layout_constraintStart_toStartOf="@+id/signup_email_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_password_et" />
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_password_et"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_email_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_password_et" />
 
             <TextView
-                android:id="@+id/signup_name_tv"
+                android:id="@+id/sign_up_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -159,11 +159,11 @@
                 android:text="이름"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/signup_email_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_password_validation_et" />
+                app:layout_constraintStart_toStartOf="@+id/sign_up_email_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_password_validation_et" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/signup_name_et"
+                android:id="@+id/sign_up_name_et"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -172,12 +172,12 @@
                 android:hint="이름을 입력해주세요"
                 android:padding="5dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_password_et"
-                app:layout_constraintStart_toStartOf="@+id/signup_name_tv"
-                app:layout_constraintTop_toBottomOf="@+id/signup_name_tv" />
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_password_et"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_name_tv"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_name_tv" />
 
             <TextView
-                android:id="@+id/signup_nickname_tv"
+                android:id="@+id/sign_up_nickname_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -185,11 +185,11 @@
                 android:text="닉네임"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/signup_email_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_name_et" />
+                app:layout_constraintStart_toStartOf="@+id/sign_up_email_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_name_et" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/signup_nickname_et"
+                android:id="@+id/sign_up_nickname_et"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -198,12 +198,12 @@
                 android:hint="닉네임을 입력해주세요"
                 android:padding="5dp"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_password_et"
-                app:layout_constraintStart_toStartOf="@+id/signup_nickname_tv"
-                app:layout_constraintTop_toBottomOf="@+id/signup_nickname_tv" />
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_password_et"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_nickname_tv"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_nickname_tv" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signup_btn"
+                android:id="@+id/sign_up_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -213,9 +213,9 @@
                 android:text="회원가입"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_nickname_et"
-                app:layout_constraintStart_toStartOf="@+id/signup_nickname_et"
-                app:layout_constraintTop_toBottomOf="@+id/signup_nickname_et" />
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_nickname_et"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_nickname_et"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_nickname_et" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
