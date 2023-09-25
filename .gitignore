@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+kakao_app_key.xml

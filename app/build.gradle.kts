@@ -79,4 +79,7 @@ dependencies {
     // okHttp
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    implementation("com.kakao.sdk:v2-all:2.16.0")
+
 }
