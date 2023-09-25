@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">capstone</string>
+    <string name="matching_title">매칭신청을 하시겠습니까?</string>
+    <string name="matching_content">상대방에게 신청 메세지를 보냅니다.</string>
+    <string name="matching_ok">확인</string>
+    <string name="matching_no">아니요</string>
+    <string name="msg_token_fmt" translatable="false">토큰 : %s</string>
+    <string name="firebase_notificaiton_channel_id">channel</string>
+
+</resources>

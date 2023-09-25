@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottom_home_no_select"
+        android:title="Home"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/matchFragment"
+        android:icon="@drawable/ic_bottom_matching_no_select"
+        android:title="Matching"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/recordFragment"
+        android:icon="@drawable/ic_bottom_record_no_select"
+        android:title="Record"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/infoFragment"
+        android:icon="@drawable/ic_bottom_info_no_select"
+        android:title="Info"
+        app:showAsAction="always" />
+</menu>
