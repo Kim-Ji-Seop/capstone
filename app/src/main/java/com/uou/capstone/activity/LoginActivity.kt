@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     private val authService = AuthService()
 
-    private val googleLoginManager = GoogleLoginManager(this, authService)
+    private val googleLoginManager = GoogleLoginManager(this, authService, lifecycleScope)
     private val kakaoLoginManager = KakaoLoginManager(this, authService, lifecycleScope)
     companion object {
         const val LOG_TAG = "LoginActivity"
