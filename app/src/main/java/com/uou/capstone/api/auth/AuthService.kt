@@ -4,6 +4,8 @@ import com.uou.capstone.api.auth.email.request.PostCodeToEmailReq
 import com.uou.capstone.api.auth.email.request.PostSignUpWithEmailReq
 import com.uou.capstone.api.auth.email.response.PostCodeToEmailResponse
 import com.uou.capstone.api.auth.email.response.PostSignUpWithEmailResponse
+import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
+import com.uou.capstone.api.auth.google.response.PostGoogleSdkLoginResponse
 import com.uou.capstone.api.getRetrofit
 
 class AuthService {
@@ -17,5 +19,10 @@ class AuthService {
     // 이메일로 회원가입
     suspend fun signUpWithEmail(req: PostSignUpWithEmailReq) : PostSignUpWithEmailResponse {
         return api.signUpWithEmail(req)
+    }
+
+    // 구글 로그인
+    suspend fun loginWithGoogleSdk(req: PostGoogleSdkLoginReq) : PostGoogleSdkLoginResponse {
+        return api.loginWithGoogleSdk(req);
     }
 }
