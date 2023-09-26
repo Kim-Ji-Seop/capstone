@@ -6,6 +6,8 @@ import com.uou.capstone.api.auth.email.response.PostCodeToEmailResponse
 import com.uou.capstone.api.auth.email.response.PostSignUpWithEmailResponse
 import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
 import com.uou.capstone.api.auth.google.response.PostGoogleSdkLoginResponse
+import com.uou.capstone.api.auth.kakao.request.PostKakaoSdkLoginReq
+import com.uou.capstone.api.auth.kakao.response.PostKakaoSdkLoginResponse
 import com.uou.capstone.api.getRetrofit
 
 class AuthService {
@@ -24,5 +26,10 @@ class AuthService {
     // 구글 로그인
     suspend fun loginWithGoogleSdk(req: PostGoogleSdkLoginReq) : PostGoogleSdkLoginResponse {
         return api.loginWithGoogleSdk(req);
+    }
+    
+    // 카카오 로그인
+    suspend fun loginWithKakaoSdk(req: PostKakaoSdkLoginReq) : PostKakaoSdkLoginResponse {
+        return api.loginWithKakaoSdk(req)
     }
 }
