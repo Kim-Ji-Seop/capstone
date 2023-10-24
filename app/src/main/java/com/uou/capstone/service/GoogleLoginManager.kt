@@ -1,6 +1,7 @@
 package com.uou.capstone.service
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LifecycleCoroutineScope
@@ -11,14 +12,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.uou.capstone.activity.LoginActivity
+import com.uou.capstone.activity.MainActivity
 import com.uou.capstone.api.auth.AuthService
 import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
-import com.uou.capstone.api.auth.kakao.request.PostKakaoSdkLoginReq
+import com.uou.capstone.common.SharedPreferenceManger
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class GoogleLoginManager(private val activity: LoginActivity, private val authService: AuthService, private val lifecycleScope: LifecycleCoroutineScope) {
+
     private lateinit var googleSignInClient: GoogleSignInClient
+
     private val signInResultLauncher = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
@@ -33,20 +37,23 @@ class GoogleLoginManager(private val activity: LoginActivity, private val authSe
         googleSignInClient = GoogleSignIn.getClient(activity, gso)
     }
 
+    // Google 로그인 화면으로 이동한다
     fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         signInResultLauncher.launch(signInIntent)
     }
 
+    // signInResultLauncher로부터 받은 결과를 처리
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            updateUI(account)
+            updateUI(account) // 로그인 성공
         } catch (e: ApiException) {
-            updateUI(null)
+            updateUI(null) // 로그인 실패
         }
     }
 
+    // 이전에 로그인한 적이 있는지 확인
     fun checkExistingLogin() {
         val account = GoogleSignIn.getLastSignedInAccount(activity)
         updateUI(account)
@@ -54,8 +61,6 @@ class GoogleLoginManager(private val activity: LoginActivity, private val authSe
 
     private fun updateUI(account: GoogleSignInAccount?) {
         if (account != null) {
-            // TODO: 사용자가 이미 로그인한 상태, 필요한 UI 업데이트나 다음 활동 시작 등의 작업을 수행
-            Log.i("Google Login","이미 로그인된 상태")
             Log.i("사용자정보-성명 :",account.displayName.toString())
             Log.i("사용자정보-이메일 :",account.email.toString())
             Log.i("사용자정보-프로필 :",account.photoUrl.toString())
@@ -72,6 +77,19 @@ class GoogleLoginManager(private val activity: LoginActivity, private val authSe
                         200 -> {
                             response.result?.let { result ->
                                 Log.d(LoginActivity.LOG_TAG, "Result : $result")
+                                SharedPreferenceManger.setLoginInfo(
+                                    activity,
+                                    result.getTokenDto().getAccessToken(),
+                                    result.getTokenDto().getRefreshToken(),
+                                    result.getUserIdx(),
+                                    result.getNickname(),
+                                    "GOOGLE"
+                                )
+
+                                // 액티비티 이동
+                                val intent = Intent(activity, MainActivity::class.java)
+                                activity.startActivity(intent)
+                                activity.finish()
                             }
                         }
                     }
@@ -85,4 +103,9 @@ class GoogleLoginManager(private val activity: LoginActivity, private val authSe
             Log.d("Google Login","로그아웃된 상태")
         }
     }
+
+    private fun autoLoginGoogle(){
+
+    }
+
 }

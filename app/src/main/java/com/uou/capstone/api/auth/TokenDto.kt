@@ -6,4 +6,9 @@ data class TokenDto(
     @SerializedName(value = "grantType") private val grantType: String,
     @SerializedName(value = "accessToken") private val accessToken: String,
     @SerializedName(value = "refreshToken") private val refreshToken: String
-)
+){
+    fun getGrantType() = grantType
+    fun getAccessToken() = accessToken
+    fun getRefreshToken() = refreshToken
+}
+

@@ -1,6 +1,8 @@
 package com.uou.capstone.service
 
+import android.content.Intent
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -8,8 +10,11 @@ import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.Constants
 import com.kakao.sdk.user.UserApiClient
 import com.uou.capstone.activity.LoginActivity
+import com.uou.capstone.activity.MainActivity
 import com.uou.capstone.api.auth.AuthService
 import com.uou.capstone.api.auth.kakao.request.PostKakaoSdkLoginReq
+import com.uou.capstone.api.auth.kakao.response.result.PostKakaoSdkLoginResult
+import com.uou.capstone.common.SharedPreferenceManger
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -72,19 +77,32 @@ class KakaoLoginManager(private val activity: LoginActivity, private val authSer
                         when (response.code) {
                             200 -> {
                                 response.result?.let { result ->
-                                    Log.d(LoginActivity.LOG_TAG, "Result : $result")
+                                    // shared에 유저정보 저장
+                                    SharedPreferenceManger.setLoginInfo(
+                                        activity,
+                                        result.getTokenDto().getAccessToken(),
+                                        result.getTokenDto().getRefreshToken(),
+                                        result.getUserIdx(),
+                                        result.getNickname(),
+                                        "KAKAO"
+                                    )
+
+                                    // 액티비티 이동
+                                    val intent = Intent(activity, MainActivity::class.java)
+                                    activity.startActivity(intent)
+                                    activity.finish()
+
                                 }
                             }
                         }
                     } catch (e: HttpException) {
-
+                        Log.e("KAKAO_RESPONSE_ERROR: ",""+e.code())
                     }
 
                 }
             }
         }
     }
-
     private fun getKakaoTokenInfo() {
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {

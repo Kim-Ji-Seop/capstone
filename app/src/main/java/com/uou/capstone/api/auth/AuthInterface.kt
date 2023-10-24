@@ -9,6 +9,8 @@ import com.uou.capstone.api.auth.google.response.PostGoogleSdkLoginResponse
 import com.uou.capstone.api.auth.kakao.request.PostKakaoSdkLoginReq
 import com.uou.capstone.api.auth.kakao.response.PostKakaoSdkLoginResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthInterface {
@@ -26,4 +28,11 @@ interface AuthInterface {
     @POST("users/auth/kakao")
     suspend fun loginWithKakaoSdk(@Body postKakaoSdkLoginReq: PostKakaoSdkLoginReq) : PostKakaoSdkLoginResponse
 
+    // 액세스 토큰 재발급 - 헤더에 Bearer 붙일 것.
+    @GET("users/auth/reissue")
+    suspend fun reissue(@Header("Authorization") jwtToken: String)
+
+    // 자동 로그인 검증
+    @GET("users/auth/auto-login")
+    suspend fun autoLogin(@Header("Authorization") jwtToken: String)
 }

@@ -7,4 +7,8 @@ data class PostGoogleSdkLoginResult(
     @SerializedName(value = "tokenDto") private val tokenDto: TokenDto,
     @SerializedName(value = "userIdx") private val userIdx: Long,
     @SerializedName(value = "nickname") private val nickname: String
-)
+){
+    fun getTokenDto() = tokenDto
+    fun getUserIdx() = userIdx
+    fun getNickname() = nickname
+}
