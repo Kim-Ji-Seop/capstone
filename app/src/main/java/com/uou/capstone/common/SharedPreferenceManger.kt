@@ -63,4 +63,20 @@ object SharedPreferenceManger {
         return loginInfo
     }
 
+    fun getLoginUserIdx(context: Context): Map<String,Long>{
+        val prefs = getPreferences(context)
+        val loginInfo = mutableMapOf<String,Long>()
+        val userIdx = prefs.getLong("userIdx",0L)
+        loginInfo["userIdx"] = userIdx
+        return loginInfo
+    }
+    fun getLoginUserNickname(context: Context): Map<String,String>{
+        val prefs = getPreferences(context)
+        val loginInfo = mutableMapOf<String,String>()
+        val userNickname = prefs.getString("nickname","") ?: ""
+        loginInfo["nickname"] = userNickname
+        return loginInfo
+    }
+
+
 }
