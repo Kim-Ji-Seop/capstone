@@ -1,8 +1,10 @@
 package com.uou.capstone.api.auth
 
 import com.uou.capstone.api.auth.email.request.PostCodeToEmailReq
+import com.uou.capstone.api.auth.email.request.PostEmailLoginReq
 import com.uou.capstone.api.auth.email.request.PostSignUpWithEmailReq
 import com.uou.capstone.api.auth.email.response.PostCodeToEmailResponse
+import com.uou.capstone.api.auth.email.response.PostEmailLoginResponse
 import com.uou.capstone.api.auth.email.response.PostSignUpWithEmailResponse
 import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
 import com.uou.capstone.api.auth.google.response.PostGoogleSdkLoginResponse
@@ -27,6 +29,10 @@ interface AuthInterface {
     // 카카오 로그인
     @POST("users/auth/kakao")
     suspend fun loginWithKakaoSdk(@Body postKakaoSdkLoginReq: PostKakaoSdkLoginReq) : PostKakaoSdkLoginResponse
+
+    // 이메일 로그인
+    @POST("users/login/email")
+    suspend fun loginWithEmail(@Body postEmailLoginReq: PostEmailLoginReq) : PostEmailLoginResponse
 
     // 액세스 토큰 재발급 - 헤더에 Bearer 붙일 것.
     @GET("users/auth/reissue")

@@ -103,9 +103,4 @@ class GoogleLoginManager(private val activity: LoginActivity, private val authSe
             Log.d("Google Login","로그아웃된 상태")
         }
     }
-
-    private fun autoLoginGoogle(){
-
-    }
-
 }

@@ -2,12 +2,18 @@ package com.uou.capstone.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.uou.capstone.api.auth.AuthService
+import com.uou.capstone.api.auth.email.request.PostEmailLoginReq
+import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
+import com.uou.capstone.common.SharedPreferenceManger
 import com.uou.capstone.databinding.ActivityLoginBinding
 import com.uou.capstone.service.GoogleLoginManager
 import com.uou.capstone.service.KakaoLoginManager
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 
 class LoginActivity : AppCompatActivity() {
@@ -37,12 +43,45 @@ class LoginActivity : AppCompatActivity() {
             googleLoginManager.signIn()
         }
         binding.loginBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            loginWithEmail()
         }
     }
 
     override fun onStart() {
         super.onStart()
+    }
+
+    private fun loginWithEmail(){
+        val req = PostEmailLoginReq(
+            email = binding.loginIdEtv.text.toString(),
+            password = binding.loginPwEtv.text.toString(),
+            provider = "EMAIL")
+        lifecycleScope.launch {
+            try {
+                val response = authService.loginWithEmail(req)
+                when (response.code) {
+                    200 -> {
+                        response.result?.let { result ->
+                            SharedPreferenceManger.setLoginInfo(
+                                this@LoginActivity,
+                                result.getTokenDto().getAccessToken(),
+                                result.getTokenDto().getRefreshToken(),
+                                result.getUserIdx(),
+                                result.getNickname(),
+                                "EMAIL"
+                            )
+
+                            // 액티비티 이동
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+            } catch (e: HttpException) {
+                Log.e("Email Login Error :",e.message())
+            }
+        }
     }
 
 }

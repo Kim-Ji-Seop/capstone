@@ -1,8 +1,10 @@
 package com.uou.capstone.api.auth
 
 import com.uou.capstone.api.auth.email.request.PostCodeToEmailReq
+import com.uou.capstone.api.auth.email.request.PostEmailLoginReq
 import com.uou.capstone.api.auth.email.request.PostSignUpWithEmailReq
 import com.uou.capstone.api.auth.email.response.PostCodeToEmailResponse
+import com.uou.capstone.api.auth.email.response.PostEmailLoginResponse
 import com.uou.capstone.api.auth.email.response.PostSignUpWithEmailResponse
 import com.uou.capstone.api.auth.google.request.PostGoogleSdkLoginReq
 import com.uou.capstone.api.auth.google.response.PostGoogleSdkLoginResponse
@@ -31,5 +33,10 @@ class AuthService {
     // 카카오 로그인
     suspend fun loginWithKakaoSdk(req: PostKakaoSdkLoginReq) : PostKakaoSdkLoginResponse {
         return api.loginWithKakaoSdk(req)
+    }
+
+    // 이메일 로그인
+    suspend fun loginWithEmail(req: PostEmailLoginReq) : PostEmailLoginResponse{
+        return api.loginWithEmail(req)
     }
 }

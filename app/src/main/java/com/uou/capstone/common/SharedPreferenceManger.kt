@@ -45,12 +45,21 @@ object SharedPreferenceManger {
      * @param context 컨텍스트 객체
      * @return 저장된 JWT 토큰을 포함한 Map 객체
      */
-    //jwt 확인
-    fun getLoginJwtInfo(context: Context): Map<String, String> {
+    // accessToken 확인
+    fun getLoginAccessTokenInfo(context: Context): Map<String, String> {
         val prefs = getPreferences(context)
         val loginInfo = mutableMapOf<String, String>()
-        val jwt = prefs.getString("jwt", "") ?: ""
-        loginInfo["jwt"] = jwt
+        val accessToken = prefs.getString("atk", "") ?: ""
+        loginInfo["atk"] = accessToken
+        return loginInfo
+    }
+
+    // refreshToken 확인
+    fun getLoginRefreshTokenInfo(context: Context): Map<String, String> {
+        val prefs = getPreferences(context)
+        val loginInfo = mutableMapOf<String, String>()
+        val refreshToken = prefs.getString("rtk", "") ?: ""
+        loginInfo["rtk"] = refreshToken
         return loginInfo
     }
 
